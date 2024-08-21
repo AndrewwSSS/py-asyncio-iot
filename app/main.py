@@ -31,9 +31,7 @@ async def main() -> None:
 
     await run_sequence(
         *[
-            service.run_program([
-                msg
-            ])
+            service.send_msg(msg)
             for msg in [
                 Message(hue_light_id, MessageType.SWITCH_ON),
                 Message(speaker_id, MessageType.SWITCH_ON),
@@ -44,9 +42,7 @@ async def main() -> None:
 
     await run_parallel(
         *[
-            service.run_program([
-                msg
-            ])
+            service.send_msg(msg)
             for msg in [
                 Message(hue_light_id, MessageType.SWITCH_OFF),
                 Message(speaker_id, MessageType.SWITCH_OFF),
